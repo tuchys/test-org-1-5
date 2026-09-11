@@ -1,0 +1,15 @@
+{
+  "schema_version": "cofabric-product-binding-v1",
+  "subject": "product_repo",
+  "product_binding_id": "6f5d6b77-1551-4b03-8c49-c2ba94a22bc2",
+  "project_id": "f6e39062-141a-475e-8716-766c17bfc988",
+  "controlled_by": {
+    "instance_repo_url": "https://github.com/tuchys/dandela-instance-f6e39062-141a-475e-8716-766c17bfc988",
+    "instance_id": "ce9bfdc7-0551-409b-a8f0-93c6b2f93fd3",
+    "instance_provider_repository_id": "github:tuchys/dandela-instance-f6e39062-141a-475e-8716-766c17bfc988"
+  },
+  "product_roots": [
+    "."
+  ],
+  "last_bound_at": "2026-09-11T10:53:20.041Z"
+}
