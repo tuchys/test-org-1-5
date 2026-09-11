@@ -2,7 +2,7 @@
 module.exports = {
   content: [
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}"
   ],
   theme: {
     extend: {
@@ -18,9 +18,13 @@ module.exports = {
           700: "#a21caf",
           800: "#86198f",
           900: "#701a75",
-        },
+          950: "#4a044e"
+        }
       },
-    },
+      fontFamily: {
+        sans: ["Inter", "ui-sans-serif", "system-ui", "sans-serif"]
+      }
+    }
   },
-  plugins: [],
-}
+  plugins: []
+};
