@@ -1,3 +1,5 @@
+import { logout } from '@/actions/auth'
+
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-gradient-to-br from-brand-950 via-brand-800 to-brand-600 flex flex-col items-center justify-center px-4">
@@ -17,13 +19,15 @@ export default function HomePage() {
           Your all-in-one store management system — inventory, customers, and sales, all in one place.
         </p>
 
-        {/* CTA */}
-        <a
-          href="/login"
-          className="inline-block bg-white text-brand-800 font-semibold text-base px-8 py-3 rounded-xl shadow-lg hover:bg-brand-50 transition-colors duration-200 mb-4 w-full sm:w-auto"
-        >
-          Sign in to your store
-        </a>
+        {/* Logout */}
+        <form action={logout}>
+          <button
+            type="submit"
+            className="inline-block bg-white/10 text-white border border-white/20 font-semibold text-base px-8 py-3 rounded-xl shadow-lg hover:bg-white/20 transition-colors duration-200 w-full sm:w-auto"
+          >
+            Sign out
+          </button>
+        </form>
 
         {/* Feature highlights */}
         <div className="mt-14 grid grid-cols-1 sm:grid-cols-3 gap-4 text-left">
