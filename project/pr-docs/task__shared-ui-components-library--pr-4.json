@@ -1,0 +1,52 @@
+{
+  "overview": "This PR introduces a comprehensive shared UI component library for use across Products, Customers, Sales, and Dashboard features. It ships reusable, Tailwind-styled React components covering data display, form controls, feedback, and layout primitives. All components are client-side ('use client') and follow a consistent variant/size prop pattern.",
+  "summary_json": {
+    "Branch": "task/shared-ui-components-library",
+    "PR URL": "https://github.com/tuchys/test-org-1-5/pull/4",
+    "Component count (visible)": "9 files shown; additional files omitted due to cap",
+    "Styling approach": "Tailwind CSS utility classes, no external component library",
+    "Key patterns": "variant + size prop enums, isLoading states, className overrides, 'use client' directive on all",
+    "Breaking changes": "None; net-new files only",
+    "Consumers": "Products, Customers, Sales, Dashboard features"
+  },
+  "files_changed": [
+    {
+      "path": "project/src/components/ui/Badge.tsx",
+      "summary": "New Badge component with success/error/warning/info/neutral variants and sm/md sizes for status labels."
+    },
+    {
+      "path": "project/src/components/ui/Button.tsx",
+      "summary": "New Button component with primary/secondary/danger/ghost variants, three sizes, loading state, and optional icon slot."
+    },
+    {
+      "path": "project/src/components/ui/DataTable.tsx",
+      "summary": "New generic DataTable with server-side pagination, column sorting, loading/empty states, and configurable page-size options."
+    },
+    {
+      "path": "project/src/components/ui/EmptyState.tsx",
+      "summary": "New EmptyState component with default SVG icon, customizable title/description, and optional action slot."
+    },
+    {
+      "path": "project/src/components/ui/FilterSelect.tsx",
+      "summary": "New FilterSelect (single and likely multi variant) with accessible label, placeholder, and disabled support."
+    },
+    {
+      "path": "project/src/components/ui/FormControls.tsx",
+      "summary": "New FormControls file exporting text, number, select, and textarea inputs wrapped in a shared FormField with error and required indicators."
+    },
+    {
+      "path": "project/src/components/ui/LoadingState.tsx",
+      "summary": "New LoadingState spinner with sm/md/lg sizes, optional message, and full-page overlay mode."
+    },
+    {
+      "path": "project/src/components/ui/MetricCard.tsx",
+      "summary": "New MetricCard for dashboard KPIs showing value, trend change with up/down icons, optional icon, and skeleton loading state."
+    },
+    {
+      "path": "project/src/components/ui/Modal.tsx",
+      "summary": "New portal-based Modal dialog with sm/md/lg/xl sizes, title, footer slot, and close handler."
+    }
+  ],
+  "extras": "Verify by importing each component into a feature page and confirming Tailwind classes resolve correctly. Follow-up: check omitted files (index 9+) for SearchInput, Toast/notification, and Pagination components referenced in DataTable imports — these may need separate review. Also confirm barrel exports (index.ts) exist so consumers can tree-shake.",
+  "fallback_text": "PR #4 on branch task/shared-ui-components-library adds a net-new shared UI component library under project/src/components/ui/. Ships Badge, Button, DataTable (paginated + sortable), EmptyState, FilterSelect, FormControls (text/number/select/textarea), LoadingState, MetricCard, and Modal. All are Tailwind-styled React client components using consistent variant/size prop patterns. No breaking changes. Additional files (SearchInput, Toast, Pagination, etc.) are referenced by DataTable but were cut off by the file cap and should be verified in the full diff. Confirm barrel index exports and Tailwind config coverage before merging."
+}
