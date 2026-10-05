@@ -1,0 +1,56 @@
+{
+  "overview": "This PR introduces a shared UI component library to be consumed across Products, Customers, Sales, and Dashboard features. It ships foundational primitives (Button, Badge, Modal, FormControls, FilterSelect, SearchInput, MetricCard, LoadingSpinner, EmptyState) as standalone client components. All components use Tailwind via a shared `cn` utility and follow a consistent variant/size API.",
+  "summary_json": {
+    "Component count (visible)": "9 files shown; additional files omitted past index 9 per cap_note",
+    "Shared utility dep": "@/lib/cn (classname merger)",
+    "Client boundary": "All components marked 'use client'",
+    "Button variants": "primary, secondary, danger, ghost",
+    "Badge variants": "default, success, error, warning, info",
+    "Modal sizes": "sm, md, lg, xl — uses React portal, Escape key + scroll-lock",
+    "FormControls exports": "TextInput, NumberInput, SelectInput, Textarea (inferred from file size/structure)",
+    "FilterSelect exports": "FilterSelect (single), likely MultiSelect (file is 5.6k chars)",
+    "SearchInput": "Debounced search input (useState/useEffect pattern)",
+    "MetricCard": "Dashboard metric card with trend indicator and loading skeleton state",
+    "Breaking changes": "None — all new files"
+  },
+  "files_changed": [
+    {
+      "path": "project/src/components/ui/Badge.tsx",
+      "summary": "New Badge component with 5 color variants (default/success/error/warning/info), two sizes, and optional dot indicator."
+    },
+    {
+      "path": "project/src/components/ui/Button.tsx",
+      "summary": "New Button component with 4 variants, 3 sizes, loading state, and left/right icon slots."
+    },
+    {
+      "path": "project/src/components/ui/EmptyState.tsx",
+      "summary": "New EmptyState component with title, description, optional custom icon, and an optional CTA action button."
+    },
+    {
+      "path": "project/src/components/ui/FilterSelect.tsx",
+      "summary": "New FilterSelect component(s) providing single (and likely multi) select dropdowns for list filtering."
+    },
+    {
+      "path": "project/src/components/ui/FormControls.tsx",
+      "summary": "New set of form input primitives (TextInput, number, select, textarea) with shared error/disabled styling."
+    },
+    {
+      "path": "project/src/components/ui/LoadingSpinner.tsx",
+      "summary": "New LoadingSpinner with sm/md/lg sizes, optional full-page overlay mode, and a LoadingSkeleton export used by MetricCard."
+    },
+    {
+      "path": "project/src/components/ui/MetricCard.tsx",
+      "summary": "New MetricCard for dashboard metrics displaying value, subtitle, icon, trend badge, and a skeleton loading state."
+    },
+    {
+      "path": "project/src/components/ui/Modal.tsx",
+      "summary": "New Modal component using React portal with Escape key close, body scroll lock, configurable size, and optional footer slot."
+    },
+    {
+      "path": "project/src/components/ui/SearchInput.tsx",
+      "summary": "New debounced search input component built with useState/useEffect for deferred onChange calls."
+    }
+  ],
+  "extras": "Verify: import paths resolve via the @/lib/cn alias and tsconfig paths are configured. Follow-up: an index barrel file (ui/index.ts) should be added for clean imports. Files past index 9 were omitted by context cap — review remaining components (likely DataTable and Toast) separately.",
+  "fallback_text": "PR #5 adds a shared UI component library under project/src/components/ui/. Nine components are confirmed: Badge (5 variants, dot option), Button (4 variants, loading/icon slots), EmptyState (icon + CTA), FilterSelect (single/multi dropdown), FormControls (text/number/select/textarea inputs with error states), LoadingSpinner (sizes + full-page overlay + LoadingSkeleton), MetricCard (dashboard card with trend + skeleton), Modal (portal, Escape key, scroll lock, footer slot), and SearchInput (debounced). All are client components using a shared cn utility. No breaking changes; all files are new. Additional files past index 9 (likely DataTable and Toast) were cut by context cap and should be reviewed separately. A barrel index export file is a recommended follow-up."
+}
