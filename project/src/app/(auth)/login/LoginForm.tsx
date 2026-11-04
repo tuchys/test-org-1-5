@@ -26,7 +26,7 @@ export default function LoginForm() {
       return
     }
 
-    router.push('/')
+    router.push('/dashboard')
     router.refresh()
   }
 
@@ -86,7 +86,7 @@ export default function LoginForm() {
 
       <p className="text-center text-sm text-gray-500">
         <Link
-          href="/auth/reset-password"
+          href="/forgot-password"
           className="font-medium text-brand-700 hover:text-brand-800 hover:underline"
         >
           Forgot your password?
