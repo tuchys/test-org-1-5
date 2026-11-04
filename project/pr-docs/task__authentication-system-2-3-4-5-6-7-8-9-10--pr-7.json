@@ -1,0 +1,26 @@
+{
+  "overview": "This PR implements a complete Supabase Auth integration for a Next.js app, covering email/password login, password reset flow, OAuth/magic-link callback handling, session middleware, and a logout server action. It introduces browser and server Supabase client utilities, a Next.js middleware that guards routes, and all associated UI pages. Unauthenticated users are redirected to /login; successful login redirects to /dashboard.",
+  "summary_json": {
+    "Protected routes": "All routes except /login, /auth/callback, and public assets require an active session",
+    "Auth redirect on success": "/dashboard",
+    "Auth redirect on failure/logout": "/login",
+    "Password reset callback path": "/auth/callback?next=/auth/reset-password",
+    "Supabase client (browser)": "src/lib/supabase/client.ts — createBrowserClient from @supabase/ssr",
+    "Supabase client (server)": "src/lib/supabase/server.ts — createServerClient with cookie handling",
+    "Middleware": "src/middleware.ts — session check + route guarding",
+    "New env vars required": "NEXT_PUBLIC_SUPABASE_URL, NEXT_PUBLIC_SUPABASE_ANON_KEY (standard Supabase SSR setup)",
+    "Breaking changes": "None noted; additive feature branch"
+  },
+  "files_changed": [
+    {
+      "path": "project/src/app/(auth)/forgot-password/page.tsx",
+      "summary": "Forgot-password page that calls Supabase resetPasswordForEmail and shows success/error state to the user."
+    },
+    {
+      "path": "project/src/app/(auth)/login/LoginForm.tsx",
+      "summary": "Client-side login form that calls signInWithPassword and redirects to /dashboard on success."
+    }
+  ],
+  "extras": "Verify: confirm NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY are set in all environments. Test the full reset flow end-to-end (email → callback → reset form). Note: FILE_CHANGES_JSON only exposed 2 of the full set of files described in the PR body; additional files (middleware, server client, auth/callback route, logout action, reset-password page) exist on the branch but were not included in the diff payload.",
+  "fallback_text": "PR #7 adds a full Supabase Auth integration to a Next.js project. It creates browser and server Supabase clients using @supabase/ssr, a middleware that guards all routes except /login and /auth/callback, a login page with email/password form that redirects to /dashboard, a forgot-password page that triggers Supabase's password reset email, an /auth/callback route for OAuth and magic-link handling, a password reset confirmation flow, and a logout server action. Only two files were surfaced in the diff preview: the forgot-password page and the login form component; the remaining files (middleware, clients, callback route, logout action) are on the branch per the PR description. Requires NEXT_PUBLIC_SUPABASE_URL and NEXT_PUBLIC_SUPABASE_ANON_KEY env vars. No breaking changes."
+}
