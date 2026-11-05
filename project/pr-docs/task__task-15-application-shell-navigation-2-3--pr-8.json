@@ -1,0 +1,28 @@
+{
+  "overview": "This PR builds the authenticated application shell and navigation system for the Next.js app. It adds a server-side session-checked layout wrapper, a collapsible desktop sidebar, and a responsive mobile drawer with links to Dashboard, Products, Customers, and Sales. Active-link highlighting, a user menu, and logout action are included.",
+  "summary_json": {
+    "Protected routes": "All routes under src/app/(app)/ redirect to /login if no Supabase session",
+    "Nav links": "/dashboard, /products, /customers, /sales",
+    "Sidebar": "Collapsible on desktop; hamburger/drawer on mobile",
+    "Active indicator": "pathname-based; dashboard matches / and /dashboard",
+    "User data passed": "full_name/name, email, avatar_url from Supabase user_metadata",
+    "Icons": "Inline SVGs (no lucide-react dependency)",
+    "Logout": "Server action via @/actions/auth logout"
+  },
+  "files_changed": [
+    {
+      "path": "project/src/app/(app)/layout.tsx",
+      "summary": "Server-side authenticated layout that checks Supabase session, redirects unauthenticated users to /login, and wraps children in AppShell with user metadata."
+    },
+    {
+      "path": "project/src/components/shell/NavLink.tsx",
+      "summary": "Client component rendering a styled nav link with pathname-based active detection, collapsed icon-only mode, and aria-current for accessibility."
+    },
+    {
+      "path": "project/src/components/shell/Sidebar.tsx",
+      "summary": "Client sidebar component with inline SVG icons for each nav section, collapsible state handling, and logout action integration."
+    }
+  ],
+  "extras": "Verify: authenticated routes redirect correctly when session is missing; collapse/expand toggle works on desktop; mobile drawer opens/closes; active link highlights on each route. Follow-up: confirm AppShell index barrel export exists at @/components/shell.",
+  "fallback_text": "PR 8 adds the authenticated app shell. The (app)/layout.tsx server component checks Supabase session and redirects to /login if absent, then passes name/email/avatar to AppShell. NavLink is a client component that derives active state from usePathname, supports collapsed icon-only rendering, and sets aria-current. Sidebar renders four nav links (Dashboard, Products, Customers, Sales) using inline SVGs (no external icon lib), handles collapsible desktop state, and wires up the auth logout server action. The shell provides consistent container styling for all child authenticated routes."
+}
